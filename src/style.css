@@ -1,0 +1,13 @@
+body {
+    background: #E8EAF6;
+}
+.navbar-custom {
+    background: #1A237E !important;
+}
+.contact {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.contact img {
+    max-width: 80px;
+}
