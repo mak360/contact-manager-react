@@ -4,10 +4,17 @@ body {
 .navbar-custom {
     background: #1A237E !important;
 }
-.contact {
-    max-width: 400px;
-    margin: 0 auto;
-}
 .contact img {
     max-width: 80px;
+}
+.navbar-dark .navbar-toggler-icon, 
+.navbar-light .navbar-toggler-icon {
+    background-image: var(--mdb-navbar-toggler-icon-bg);
+}
+@media (max-width: 1200px) {
+    .contact {text-align: center;}
+}
+@media (max-width: 1024px) {
+    .contact {text-align: left;}
+    .contact .card-body {display: flex;}
 }
