@@ -1,34 +1,43 @@
 import React, { Component } from 'react'
-// import { Route, Switch } from 'react-router'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import Contacts from './Contacts'
 import Nav from './Nav'
 import ContactDetails from './ContactDetails'
 import About from './About'
+import Footer from './Footer'
+
+import contacts from './data.json'
 
 export default class App extends Component {
+  state = {
+    contacts
+  }
+
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Nav />
-        <Routes>
-          <Route exact path="/" element={<Contacts/>} />
+        {/* <Routes>
+          <Route path="/" element={<Contacts/>} />
           <Route path="/contact/:id" element={<ContactDetails/>} />
           <Route path="/about" element={<About/>} />
         </Routes>
-        {/* <Switch>
+        <Footer /> */}
+        <Switch>
           <Route exact path="/">
-            <Contacts/>
+            <Contacts contacts={contacts} />
           </Route>
           <Route path="/contact/:id">
-            <ContactDetails/>
+            <ContactDetails contacts={contacts} />
           </Route>
           <Route path="/about">
-            <About/>
+            <About />
           </Route>
-        </Switch> */}
-      </BrowserRouter>
+        </Switch>
+        <Footer />
+      </Router>
     )
   }
 }

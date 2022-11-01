@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 
-import contacts from './data.json'
-
 import Contact from './Contact'
 
 export default class Contacts extends Component {
-  state = {
-    contacts
-  }
 
   render() {
     // const {contacts} = this.state
@@ -27,7 +22,7 @@ export default class Contacts extends Component {
         </div>     
         <div className='container'>
           <div className='row'>
-            {this.state.contacts.map(contact => 
+            {this.props.contacts.map(contact => 
               <Contact contact={contact} key={contact.id} />
             )}            
           </div>
