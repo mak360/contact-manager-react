@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router'
 import { BrowserRouter as Router } from 'react-router-dom'
+import axios from 'axios'
 
 import Contacts from './Contacts'
 import Nav from './Nav'
@@ -8,14 +9,26 @@ import ContactDetails from './ContactDetails'
 import About from './About'
 import Footer from './Footer'
 
-import contacts from './data.json'
+// import contacts from './data.json'
 
 export default class App extends Component {
   state = {
-    contacts
+    contacts: []
+  }
+  componentDidMount(){
+    axios
+      .get('https://randomuser.me/api/?seed=contactmanager&inc=name,email,login,gender,dob,picture,phone&results=21')
+      .then(data => {
+        // console.log(data.data.results)
+        this.setState({
+          contacts: data.data.results
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
+    // console.log(this.state.contacts)
     return (
       <Router>
         <Nav />
@@ -27,10 +40,10 @@ export default class App extends Component {
         <Footer /> */}
         <Switch>
           <Route exact path="/">
-            <Contacts contacts={contacts} />
+            <Contacts contacts={this.state.contacts} />
           </Route>
           <Route path="/contact/:id">
-            <ContactDetails contacts={contacts} />
+            <ContactDetails contacts={this.state.contacts} />
           </Route>
           <Route path="/about">
             <About />

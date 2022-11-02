@@ -22,8 +22,9 @@ export default class Contacts extends Component {
         </div>     
         <div className='container'>
           <div className='row'>
+            {/* {console.log(this.props.contacts)} */}
             {this.props.contacts.map(contact => 
-              <Contact contact={contact} key={contact.id} />
+              <Contact contact={contact} key={contact.login.uuid} />
             )}            
           </div>
         </div>
